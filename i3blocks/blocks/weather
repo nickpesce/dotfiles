@@ -1,0 +1,20 @@
+#!/usr/bin/python
+import requests
+import os
+import webbrowser
+
+if(os.environ.get('BLOCK_BUTTON', 0) == '1'):
+    webbrowser.open('https://www.wunderground.com/weather/us/md/college-park')
+zipCode = '20740'
+apiKey = 'bddf000e1e78ce7e47d81a5b93a9103c'
+#imperial, metric, or kelvin
+units = 'imperial'
+r = requests.get('http://api.openweathermap.org/data/2.5/weather?zip={}&units={}&APPID={}'.format(zipCode, units, apiKey))
+result = r.json()
+weather = result['weather'][0]['main']
+temp = result['main']['temp']
+print("{} {:.0f}°F".format(weather, temp))
+print("{} {:.0f}°F".format(weather, temp))
+print()
+
+

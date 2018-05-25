@@ -1,0 +1,23 @@
+#!/bin/bash
+#TUN_STATUS=$(ip link | grep -P '(?:\n|^)\d+:+.*tun.*state UP.*(?:\n|$)')
+TUN_STATUS=$(ip tuntap)
+if [ "$BLOCK_BUTTON" = "1" ]
+then
+    if [ -z "$TUN_STATUS" ]
+    then
+        i3-sensible-terminal -e sudo /usr/bin/systemctl start openvpn-client@US_East.service
+    else
+        i3-sensible-terminal -e sudo /usr/bin/systemctl stop openvpn-client@US_East.service
+    fi
+fi
+if [ -z "$TUN_STATUS" ]
+then
+    DISPLAY=""
+    COLOR=\#FF8888
+else
+    DISPLAY=""
+    COLOR=\#88FF88
+fi
+echo $DISPLAY
+echo $DISPLAY
+echo $COLOR

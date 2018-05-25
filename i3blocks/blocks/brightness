@@ -1,0 +1,22 @@
+#!/bin/bash
+case $BLOCK_BUTTON in
+  1) xbacklight -set 1 ;; # left click, min
+  3) xbacklight -set 100 ;; # right click, max
+  4) xbacklight -inc 5 ;; # scroll up, increase
+  5) xbacklight -dec 5 ;; # scroll down, decrease
+esac
+
+TIMEOUT=$( xset q | grep timeout: | awk '/timeout: (\d*)/ {print $2}' )
+BRIGHTNESS=$(printf "%.0f" $(xbacklight))
+DISPLAY="$BRIGHTNESS%"
+COLOR=""
+if [ $TIMEOUT -eq 0 ]
+then
+    DISPLAY="$DISPLAY wake"
+    COLOR=\#BBBB00
+fi
+echo $DISPLAY
+echo $DISPLAY
+echo $COLOR
+
+

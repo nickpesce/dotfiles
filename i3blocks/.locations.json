@@ -1,0 +1,4 @@
+{
+    "config" : "~/.config/i3blocks/config",
+    "blocks" : "~/.config/i3blocks/blocks"
+}
