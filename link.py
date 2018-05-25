@@ -25,4 +25,7 @@ for config_dir in os.listdir():
                     os.rename(dest, backup_path)
                     print("Old {} moved to {}".format(config_file, backup_path));
                 print("ln -s {} {}".format(source, dest))
+                dest_dir = os.path.dirname(dest)
+                if not os.path.isdir(dest_dir):
+                    os.makedirs(dest_dir)
                 os.symlink(source, dest)
