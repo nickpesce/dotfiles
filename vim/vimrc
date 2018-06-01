@@ -1,15 +1,48 @@
 execute pathogen#infect()
 set shell=/bin/bash
-set number
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+" Visuals {{{
+set number
+set cursorline
 syntax enable
 set background=dark
 colorscheme solarized
 set title
 set titlestring="modeline vim: %F"
+filetype plugin indent on              " filetype indent files in .vim/indent/...
+set wildmenu                    " shows autocomplete command options     
+set incsearch                   " search as characters are entered
+set hlsearch                    " highlight matches
+nnoremap <leader><space> :nohlsearch<CR>        " stop highlighting after search
 let g:tex_flavor='latex'
+" }}}
+" Movement {{{
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+" highlight last inserted text
+nnoremap gV `[v`]
+" }}}
+" Files {{{
+set hidden              "allow modified buffers
+" }}}
+" Shortcuts {{{
+let mapleader = ","
+" toggle gundo
+nnoremap <leader>u :GundoToggle<CR>
+" source .vimrc
+nnoremap <leader>sv :source $MYVIMRC<CR>
+" save session. reopen with vim -S
+nnoremap <leader>s :mksession<CR>
+
 
 noremap <F3>g :YcmCompleter GoTo<cr>
 noremap <F3>r :YcmCompleter GoToReferences<cr>
-
-filetype plugin indent on    " required
+" }}}
+" Powerline {{{
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+set laststatus=2
+" }}}
+" vim:foldmethod=marker:foldlevel=0

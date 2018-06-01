@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/nick/.vim'
+let g:netrw_dirhist_2='/home/nick/School/S5/CMSC426/p4/project4_npesce/log_dir'
+let g:netrw_dirhist_3='/home/nick/.config/i3blocks'
+let g:netrw_dirhist_4='/home/nick/.config/i3blocks/blocks'
+let g:netrw_dirhist_5='/home/nick/code/python/music-vis-test'
+let g:netrw_dirhist_6='/home/nick/.vim/bundle/vim-latex-1.10.0'
+let g:netrw_dirhist_7='/home/nick/dotfiles/i3blocks'
