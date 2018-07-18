@@ -1,0 +1,5 @@
+{
+    "pacman.conf": "/etc/pacman.conf",
+    "pacman.d/hooks": "/etc/pacman.d/hooks",
+    "pacman.d/mirrorlist": "/etc/pacman.d/mirrorlist"
+}

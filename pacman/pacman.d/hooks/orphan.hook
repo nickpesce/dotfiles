@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+When = PostTransaction
+Exec = /usr/bin/bash -c "/usr/bin/echo 'Checking for orphaned packages...'; /usr/bin/pacman -Qtd || /usr/bin/echo '=> None found.'"
