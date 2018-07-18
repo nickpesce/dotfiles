@@ -1,6 +1,7 @@
-#! /bin/python
+#! /usr/bin/python3
 import json
 import os
+import shutil
 import sys
 
 LOCATIONS_FILE_NAME = '.locations.json'
@@ -52,7 +53,7 @@ def backup(path, config_dir, config_file):
         backup_dir = os.path.join(ROOT_DIR, OLD_FILES_DIR, config_dir)
         ensure_dir(backup_dir)
         backup_path = os.path.join(backup_dir, config_file)
-        os.rename(path, backup_path)
+        shutil.move(path, backup_path)
         print("Old {} moved to {}".format(config_file, backup_path));
 
 if __name__ == '__main__':
