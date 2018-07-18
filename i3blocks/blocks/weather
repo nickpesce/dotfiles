@@ -4,8 +4,8 @@ import os
 import webbrowser
 
 if(os.environ.get('BLOCK_BUTTON', 0) == '1'):
-    webbrowser.open('https://www.wunderground.com/weather/us/md/college-park')
-zipCode = '20740'
+    webbrowser.open('https://www.wunderground.com/weather/us/ny/new-york')
+zipCode = '10128'
 apiKey = 'bddf000e1e78ce7e47d81a5b93a9103c'
 #imperial, metric, or kelvin
 units = 'imperial'
