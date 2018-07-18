@@ -1,12 +1,13 @@
 #! /usr/bin/python3
 import json
 import os
+import re
 import shutil
 import sys
 
 LOCATIONS_FILE_NAME = '.locations.json'
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-OLD_FILES_DIR = ".old"
+OLD_FILES_DIR = '.old'
 
 def link_all():
     for config_dir in iter_valid_dirs():
@@ -37,11 +38,13 @@ def iter_files(locations_path):
     specified by the locations file."""
     if not os.path.isfile(locations_path):
         return print("{} does not exist!".format(locations_path))
+    sudo_user = os.getenv('SUDO_USER') or ''
     with open(locations_path) as locations_file:
         locations = json.load(locations_file)
         for config_file in locations:
             source = config_file
-            dest = os.path.expanduser(locations[config_file])
+            user_location = re.sub('~', '~{}'.format(sudo_user), locations[config_file])
+            dest = os.path.expanduser(user_location)
             yield (source, dest)
 
 def ensure_dir(dir_):
