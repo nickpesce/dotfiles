@@ -1,12 +1,18 @@
 #!/usr/bin/python
+import configparser
 import requests
 import os
 import webbrowser
 
+config = configparser.ConfigParser()
+config.read('/home/nick/.config/environment.conf')
+zipCode = config['location']['zipcode']
+state = config['location']['state']
+city = config['location']['city']
+apiKey = config['api']['openweathermap']
+
 if(os.environ.get('BLOCK_BUTTON', 0) == '1'):
-    webbrowser.open('https://www.wunderground.com/weather/us/ny/new-york')
-zipCode = '10128'
-apiKey = 'bddf000e1e78ce7e47d81a5b93a9103c'
+    webbrowser.open('https://www.wunderground.com/weather/us/{}/{}'.format(state, city))
 #imperial, metric, or kelvin
 units = 'imperial'
 r = requests.get('http://api.openweathermap.org/data/2.5/weather?zip={}&units={}&APPID={}'.format(zipCode, units, apiKey))

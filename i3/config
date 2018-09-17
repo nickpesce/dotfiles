@@ -186,6 +186,7 @@ bindsym $mod+x exec ~/bin/lock
 bindsym $mod+c exec /usr/bin/firefox
 #bindsym $mod+c exec /usr/bin/qutebrowser
 #bindsym $mod+n exec /home/nick/bin/keep
+bindsym $mod+equal exec /usr/bin/urxvt -e fish -c /usr/bin/bc
 bindsym $mod+n exec /home/nick/bin/firefox --new-window https://trello.com/b/t5RB4cg5/homework
 bindsym $mod+space exec /usr/bin/rofi -show run
 bindsym $mod+g exec /usr/bin/rofi -show window
