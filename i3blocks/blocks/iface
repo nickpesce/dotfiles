@@ -68,5 +68,6 @@ esac
 
 echo "$SSID"
 echo "$SSID"
+echo "#FFFFFF"
 #echo "$IPADDR" # full text
 #echo "$IPADDR" # short text

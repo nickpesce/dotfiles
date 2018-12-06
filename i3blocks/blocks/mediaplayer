@@ -64,15 +64,10 @@ if ($player_arg eq '' or $player_arg =~ /cmus$/) {
     exit 0 unless $player_arg eq '';
 }
 
-my $artist = qx(playerctl $player_arg metadata artist);
+my $metadata = qx(playerctl $player_arg metadata --format "{{ title }} - {{ artist }}");
 # exit status will be nonzero when playerctl cannot find your player
 exit(0) if $?;
-push(@metadata, $artist) if $artist;
 
-my $title = qx(playerctl $player_arg metadata title);
-exit(0) if $?;
-push(@metadata, $title) if $title;
-
-if (@metadata) {print(join(" - ", @metadata)."\n")} else {print("")};
-if (@metadata) {print(join(" - ", @metadata)."\n")} else {print("")};
-print("#88FFFF\n");
+if ($metadata) {print($metadata)} else {print("")};
+if ($metadata) {print($metadata)} else {print("")};
+print("#88FFFF");
