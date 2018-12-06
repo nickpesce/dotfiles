@@ -1,0 +1,31 @@
+#!/usr/bin/python3
+import os
+import subprocess
+import sys
+
+STATUSES_ROOT = os.path.join(os.environ['HOME'], '.mylogs', 'statuses')
+statuses = []
+for filepath in os.listdir(STATUSES_ROOT):
+    path = os.path.join(STATUSES_ROOT, filepath)
+    f = open(path, 'r')
+    statuses.append((f.read().strip(), os.path.getmtime(path), path))
+statuses.sort(key=lambda x: x[1], reverse=True)
+if not statuses:
+    sys.exit(0)
+messages = list(map(lambda x: x[0], statuses))
+if(os.environ.get('BLOCK_BUTTON', 0) == '1'):
+    # Left click: Show status message and time
+    process = subprocess.Popen(['ls', '-alt', statuses[0][2]], stdout=subprocess.PIPE)
+    ls, err = process.communicate()
+    subprocess.call(['i3-sensible-terminal', '-hold', '-e', 'echo', ('{}\n{}'.format(ls.decode('utf-8'), statuses[0][0]))])
+
+if(os.environ.get('BLOCK_BUTTON', 0) == '3'):
+    # Right click: Remove most recent status
+    os.remove(statuses[0][2])
+    sys.exit(0)
+
+if messages:
+    status = (('({}) '.format(len(messages)) if len(messages) > 1 else '') + messages[0])
+    print(status)
+    print(status)
+    print('#FFFF88')
