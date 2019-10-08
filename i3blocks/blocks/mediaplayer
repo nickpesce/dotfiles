@@ -68,6 +68,8 @@ my $metadata = qx(playerctl $player_arg metadata --format "{{ title }} - {{ arti
 # exit status will be nonzero when playerctl cannot find your player
 exit(0) if $?;
 
-if ($metadata) {print($metadata)} else {print("")};
-if ($metadata) {print($metadata)} else {print("")};
-print("#88FFFF");
+if ($metadata) {
+    if ($metadata) {print($metadata)} else {print("")};
+    if ($metadata) {print($metadata)} else {print("")};
+    print("#88FFFF");
+};

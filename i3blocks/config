@@ -100,7 +100,7 @@ interval=30
 [cpu_usage]
 label=
 interval=5
-min_width= 99.00%
+#min_width= 99.00%
 #separator=false
 
 # Network interface monitoring
@@ -129,8 +129,6 @@ interval=10
 #
 # The battery instance defaults to 0.
 [battery]
-label=BAT
-label=⚡
 #instance=1
 interval=3
 

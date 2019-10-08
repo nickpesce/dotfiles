@@ -1,2 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/nick/code/scripts/facebook_data/messages-11-16-2018/inbox/wwkennethlowndo_4397722f17'
+let g:netrw_dirhist_2='/mnt/usb/movies'
+let g:netrw_dirhist_3='/home/nick/code/web/remote-vibrate/jquery.vibrate.js-master'
+let g:netrw_dirhist_4='/etc/systemd/system/sleep.target.wants'

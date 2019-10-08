@@ -22,7 +22,8 @@ if(os.environ.get('BLOCK_BUTTON', 0) == '1'):
 if(os.environ.get('BLOCK_BUTTON', 0) == '3'):
     # Right click: Remove most recent status
     os.remove(statuses[0][2])
-    sys.exit(0)
+    del statuses[0]
+    del messages[0]
 
 if messages:
     status = (('({}) '.format(len(messages)) if len(messages) > 1 else '') + messages[0])
